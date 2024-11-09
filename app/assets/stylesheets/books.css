@@ -1,0 +1,68 @@
+#books {
+  h1 {
+    text-align: center;
+  }
+
+  .book-list {
+    --gap: clamp(var(--inline-space), 2cqi, calc(var(--inline-space) * 3));
+    --hover-size: 0;
+
+    display: grid;
+    gap: var(--block-space) var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(max(150px, 14cqi), 1fr));
+    padding: var(--gap);
+
+    .book-list__item {
+      position: relative;
+      display: inline-flex;
+      margin-inline: auto;
+
+      .book-list__item__link {
+        border-radius: 10px;
+        content: "";
+        inset: 0;
+        position: absolute;
+        z-index: 1;
+        /* background: black; */
+
+
+      }
+
+      .book-list__item__link:hover {
+        background: var(--color-subtle-dark);
+        opacity: 0.5;
+      }
+    }
+
+    .book {
+      --color-ink-book-cover: var(--color-ink);
+      --color-bg-book-cover: var(--color-subtle-light);
+      --outline-color: var(--color-subtle-dark);
+
+      outline: 1px solid var(--outline-color);
+      color: var(--color-ink-book-cover);
+      background: var(--color-bg-book-cover);
+      border-radius: 10px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      margin: 0;
+
+      /* 480 x 640 */
+      width: 20rem;
+      aspect-ratio: 3 / 4;
+
+      :is(h2, p) {
+        margin: 0;
+        padding: 0;
+      }
+
+      :is(h2) {
+        display: inline;
+      }
+
+    }
+  }
+}
