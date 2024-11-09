@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
 
-  resources :books, only: [:index, :show], param: :slug
+  resources :books, only: [:index, :show], param: :slug do
+    get ':year', to: 'books#show', on: :member, as: :show_with_year, constraints: { year: /\d{4}/ }
+    get ':year/:month', to: 'books#show', on: :member, as: :show_with_month, constraints: { year: /\d{4}/, month: /\d{2}/ }
+  end
+  resources :articles, only: [:index, :show]
 end

@@ -1,1 +1,12 @@
-<h1><%= @book.title %></h1>
+<div id="book-title-wrapper">
+  <div id="book-title">
+    <h1><%= @book.title %></h1>
+    <h2><%= @book.description %></h2>
+  </div>
+</div>
+
+<div class="article-list">
+  <%= render partial: 'books/article', collection: @articles, as: :article %>
+</div>
+
+<div>

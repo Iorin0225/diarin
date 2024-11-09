@@ -1,0 +1,14 @@
+<% cache article do %>
+  <div class='article-list__item'>
+    <%= link_to article_path(article), class: 'article-list__item__link' do %>
+      <div class='article'>
+        <div class='article__title'>
+          <%= article.title %>
+        </div>
+        <div class='article__published-at'>
+          <%= format_datetime(article.published_at) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
