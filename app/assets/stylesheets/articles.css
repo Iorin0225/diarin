@@ -31,7 +31,9 @@
         max-height: 20rem;
       }
 
-      .twitter-tweet {
+      .twitter-tweet, .instagram-media {
+        margin-top: 1rem !important;
+        min-width: 20% !important;
         max-width: 50ch !important;
       }
     }
