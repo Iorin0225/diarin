@@ -1,0 +1,31 @@
+#articles {
+  display: grid;
+  justify-content: center;
+
+  .article {
+    font-family: var(--font-mincho);
+    font-size: .85rem;
+    line-height: 1.5rem;
+    letter-spacing: .12em;
+
+    padding: 2rem 1rem;
+    max-width: 50rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .article__title{
+      font-weight: normal;
+      font-size: 1.5rem;
+
+      margin: 0;
+      padding-bottom: .2rem;
+      border-bottom: 1px dotted var(--color-ink);
+    }
+
+    .article__body {
+      /* font-size: .85rem; */
+    }
+  }
+}

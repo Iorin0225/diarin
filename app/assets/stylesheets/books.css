@@ -65,46 +65,17 @@
 
   /* ======== show ======== */
 
-  #book-title-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    #book-title {
-      text-align: center;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: .2rem;
-
-      max-width: 20rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      padding: 1rem 2rem;
-      border: 1px solid var(--color-ink);
-
-      :is(h1, h2) {
-        display: inline;
-        margin: 0;
-      }
-
-      :is(h1) {
-        border-bottom: 1px solid var(--color-ink);
-      }
-
-      :is(h2) {
-        font-size: .8rem;
-        font-weight: 400;
-
-        /* color: var(--color-subtle-dark); */
-      }
-    }
+  .book-first-view {
+    display: grid;
+    gap: var(--block-space);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: var(--block-space);
   }
 
-  .article-list{
+  .article-list {
+    grid-column: span 2;
+
+    font-family: var(--font-mincho);
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -116,9 +87,13 @@
 
     .article-list__item {
       .article-list__item__link {
+        background: var(--color-subtle-dark);
         &:hover {
           font-weight: bold;
           box-shadow: none;
+
+          /* ↓I don't know why but it doesn't work */
+          /* background: var(--color-subtle-dark); */
 
           .article {
             /* background: var(--color-subtle-dark); */
@@ -138,6 +113,67 @@
       color: var(--color-ink);
 
       border-bottom: 1px dotted var(--color-ink);
+    }
+  }
+
+  .year-month-list {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    margin: 1rem;
+    padding: 1rem;
+
+    border: 1px solid var(--color-ink);
+    border-radius: 10px;
+
+    .year-month-list__title {
+      display: inline-flex;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      padding: 0;
+
+      :is(a) {
+        color: var(--color-ink);
+        text-decoration: none;
+
+        &:hover {
+          font-weight: bold;
+          background: var(--color-subtle-dark);
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+
+      &.year-month-list__title--selected {
+        font-weight: bold;
+      }
+    }
+
+    .year-month-list__item {
+      display: inline-flex;
+
+      margin: 0;
+      border-bottom: 1px dotted var(--color-ink);
+
+      :is(a) {
+        font-size: .8rem;
+        font-family: var(--font-mono);
+        color: var(--color-ink);
+        text-decoration: none;
+        /* padding: 0 .5rem;
+        border-radius: 10px; */
+
+        &:hover {
+          /* font-weight: bold; */
+          background: var(--color-subtle-dark);
+        }
+      }
+
+      &.year-month-list__item--selected {
+        font-weight: bold;
+      }
     }
   }
 }

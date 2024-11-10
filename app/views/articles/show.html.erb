@@ -1,2 +1,18 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div id="book-title-wrapper">
+  <%= link_to book_path(@book) do %>
+  <div id="book-title">
+    <h1><%= @book.title %></h1>
+    <h2><%= @book.description %></h2>
+  </div>
+  <% end %>
+</div>
+
+<div class="article">
+  <h1 class="article__title"><%= @article.title %></h1>
+  <div class="article__body">
+    <%= body_with_pre_wrap(@article) %>
+  </div>
+  <p class="article__meta">
+    <%= date_only(@article.published_at) %>
+  </p>
+</div>
