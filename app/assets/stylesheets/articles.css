@@ -30,6 +30,10 @@
         max-width: 80ch;
         max-height: 20rem;
       }
+
+      .twitter-tweet {
+        max-width: 50ch !important;
+      }
     }
 
     .article__action-buttons {
