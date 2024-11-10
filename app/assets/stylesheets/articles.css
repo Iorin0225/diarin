@@ -25,7 +25,29 @@
     }
 
     .article__body {
-      /* font-size: .85rem; */
+
+      :is(img) {
+        max-width: 80ch;
+        max-height: 20rem;
+      }
+    }
+
+    .article__action-buttons {
+      :is(a) {
+        text-transform: uppercase;
+        color: var(--color-ink);
+        cursor: pointer;
+        text-decoration: none;
+
+        padding: 0 0 0 .1rem;
+
+        border-bottom: 1px solid var(--color-ink);
+
+        &:hover {
+          color: var(--color-link);
+          border-bottom: 1px solid var(--color-link);
+        }
+      }
     }
   }
 }

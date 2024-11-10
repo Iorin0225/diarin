@@ -8,6 +8,7 @@
     --hover-size: 0;
 
     display: grid;
+
     gap: var(--block-space) var(--gap);
     grid-template-columns: repeat(auto-fit, minmax(max(150px, 14cqi), 1fr));
     padding: var(--gap);
@@ -67,6 +68,8 @@
 
   .book-first-view {
     display: grid;
+    align-items: start;
+
     gap: var(--block-space);
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     padding: var(--block-space);
