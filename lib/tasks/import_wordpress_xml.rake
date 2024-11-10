@@ -34,7 +34,7 @@ namespace :import_wordpress_xml do
     blog_posts.each do |blog_post|
       insert_bulk_data << {
         book_id: book.id,
-        id: blog_post.id,
+        imported_id: blog_post.id,
         title: blog_post.title,
         body: blog_post.content,
         status: blog_post.status,

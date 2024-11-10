@@ -14,6 +14,7 @@
   </div>
   <p class="article__meta">
     <%= date_only(@article.published_at) %>
+    <%= debug_id(@article) %>
   </p>
   <div class="article__action-buttons">
     <a onclick="history.back()">
