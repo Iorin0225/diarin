@@ -17,8 +17,18 @@
     <%= debug_id(@article) %>
   </p>
   <div class="article__action-buttons">
-    <a onclick="history.back()">
-      戻る
-    </a>
+    <div>
+      <% if @article.prev_article.present? %>
+        <%= link_to "前へ", article_path(@article.prev_article) %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "戻る", book_path(@article.book) %>
+    </div>
+    <div>
+      <% if @article.next_article.present? %>
+        <%= link_to "次へ", article_path(@article.next_article) %>
+      <% end %>
+    </div>
   </div>
 </div>

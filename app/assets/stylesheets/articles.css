@@ -33,7 +33,14 @@
     }
 
     .article__action-buttons {
+      margin-top: 2rem;
+
+      display: flex;
+      flex-direction: row;
+      gap: .5rem;
+
       :is(a) {
+        font-size: .75rem;
         text-transform: uppercase;
         color: var(--color-ink);
         cursor: pointer;
