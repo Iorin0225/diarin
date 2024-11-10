@@ -1,12 +1,13 @@
 module ArticlesHelper
   def body_with_pre_wrap(article)
-    safe_html = sanitize(body_with_embedding(article), tags: %w(blockquote img a script), attributes: %w(class href src charset async data-instgrm-permalink))
+    safe_html = sanitize(body_with_embedding(article), tags: %w(blockquote img a script iframe), attributes: %w(class href src charset async data-instgrm-permalink))
 
     content_tag :span, safe_html, style: 'white-space: pre-wrap;'
   end
 
   def body_with_embedding(article)
     body_html = article.body
+
     twitter_urls = body_html.scan(/https:\/\/twitter.com\/\w+\/status\/\d+/)
     body_html = twitter_urls.inject(body_html) do |html, url|
       html.gsub(url, twitter_embed(url))
@@ -21,6 +22,22 @@ module ArticlesHelper
     body_html = instagram_reel_urls.inject(body_html) do |html, url|
       html.gsub(url, instagram_reel_embed(url))
     end
+
+    youtube_urls = body_html.scan(/https:\/\/www.youtube.com\/watch\?v=[\w-]+/)
+    youtube_urls += body_html.scan(/https:\/\/youtu.be\/[\w-]+/)
+    body_html = youtube_urls.inject(body_html) do |html, url|
+      html.gsub(url, youtube_embed(url))
+    end
+  end
+
+  def youtube_embed(url)
+    if url.include?('youtu.be')
+      video_id = url.split('/').last
+    else
+      video_id = url.split('v=').last
+    end
+    embed_url = "https://www.youtube.com/embed/#{video_id}"
+    content_tag :iframe, '', src: embed_url
   end
 
   def instagram_reel_embed(url)

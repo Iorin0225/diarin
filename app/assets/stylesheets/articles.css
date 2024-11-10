@@ -26,9 +26,11 @@
 
     .article__body {
 
-      :is(img) {
+      :is(img), :is(iframe) {
         max-width: 80ch;
         max-height: 20rem;
+
+        border: none;
       }
 
       .twitter-tweet, .instagram-media {
