@@ -54,6 +54,23 @@ namespace :import_wordpress_xml do
       book.articles.where('body LIKE %https://%')
     end
   end
+
+  desc "Remove wordpress strings"
+  task remove_wordpress_strings: :environment do
+    Article.where('body like ?', "%wp:paragraph%").find_each do |article|
+      body = article.body
+      body.remove!("<!-- wp:paragraph -->\n").remove!("\n<!-- /wp:paragraph -->")
+      article.update(body: body)
+    end
+
+    Article.where('body like ?', "%<p>%").find_each do |article|
+      body = article.body
+      body.remove!("<p>").remove!("</p>")
+      article.update(body: body)
+    end
+
+    puts 'Done!'
+  end
 end
 
 

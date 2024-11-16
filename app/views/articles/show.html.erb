@@ -13,7 +13,7 @@
     <%= body_with_pre_wrap(@article) %>
   </div>
   <p class="article__meta">
-    <%= date_only(@article.published_at) %>
+    <%= date_only(@article.published_at) || @article.status %>
     <%= debug_id(@article) %>
   </p>
   <div class="article__action-buttons">
@@ -23,11 +23,11 @@
       <% end %>
     </div>
     <div>
-      <%= link_to "戻る", book_path(@article.book) %>
+      <%= link_to "一覧", book_path(@article.book) %>
     </div>
     <div>
       <% if @article.next_article.present? %>
-        <%= link_to "次へ", article_path(@article.next_article) %>
+        <%= link_to "後へ", article_path(@article.next_article) %>
       <% end %>
     </div>
   </div>
