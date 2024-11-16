@@ -1,39 +1,53 @@
 <div id="book-title-wrapper">
-  <%= link_to books_path do %>
-  <div id="book-title">
-    <h1><%= @book.title %></h1>
-    <h2><%= @book.description %></h2>
-  </div>
+  <%= link_to book_path(@book) do %>
+    <div id="book-title">
+      <h1><%= @book.title %></h1>
+      <h2><%= @book.description %></h2>
+    </div>
   <% end %>
 </div>
 
+<div id="diain-logo">
+  <%= link_to books_path do %>
+    produced by
+    <span class="diarin-name">Diarin</span>
+  <% end %>
+</div>
 <div class="book-first-view">
   <div class="article-list book-first-view__item">
     <%= render partial: 'books/article', collection: @articles, as: :article %>
   </div>
-  <div class="year-month-list book-first-view__item">
-    <% selected_year = params[:year].to_i %>
-    <% selected_month = params[:month].to_i %>
-    <% current_year = nil %>
-    <% @book.year_months.each do |year_month| %>
-      <% if current_year != year_month[:year] %>
-        <% current_year = year_month[:year] %>
-        <% year_span_class = ['year-month-list__title'] %>
-        <% year_span_class << 'year-month-list__title--selected' if selected_year == current_year %>
-        <%= content_tag :span, class: year_span_class.join(' ') do %>
-          <% link_to show_with_year_book_path(@book.slug, year: current_year) do %>
-            <%= current_year %>年
+  <div class="sidebar-contents">
+    <div class="search-field book-first-view__item">
+      <%= form_with url: book_path(@book.slug), method: :get, html: { class: "search-field__form" } do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search articles", class: "search-field__input" %>
+        <%= submit_tag "Search", class: "search-field__submit" %>
+      <% end %>
+    </div>
+    <div class="year-month-list book-first-view__item">
+      <% selected_year = params[:year].to_i %>
+      <% selected_month = params[:month].to_i %>
+      <% current_year = nil %>
+      <% @book.year_months.each do |year_month| %>
+        <% if current_year != year_month[:year] %>
+          <% current_year = year_month[:year] %>
+          <% year_span_class = ['year-month-list__title'] %>
+          <% year_span_class << 'year-month-list__title--selected' if selected_year == current_year %>
+          <%= content_tag :span, class: year_span_class.join(' ') do %>
+            <% link_to show_with_year_book_path(@book.slug, year: current_year) do %>
+              <%= current_year %>年
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% year_month_div_class = ['year-month-list__item'] %>
+        <% year_month_div_class << 'year-month-list__item--selected' if selected_year == current_year && selected_month == year_month[:month] %>
+        <%= content_tag :div, class: year_month_div_class.join(' ') do %>
+          <%= link_to show_with_year_and_month_book_path(@book.slug, year: year_month[:year], month: year_month[:month]) do %>
+            <%= year_month[:year] %>年<%= year_month[:month] %>月（<%= year_month[:count] %>）
           <% end %>
         <% end %>
       <% end %>
-
-      <% year_month_div_class = ['year-month-list__item'] %>
-      <% year_month_div_class << 'year-month-list__item--selected' if selected_year == current_year && selected_month == year_month[:month] %>
-      <%= content_tag :div, class: year_month_div_class.join(' ') do %>
-        <%= link_to show_with_year_and_month_book_path(@book.slug, year: year_month[:year], month: year_month[:month]) do %>
-          <%= year_month[:year] %>年<%= year_month[:month] %>月（<%= year_month[:count] %>）
-        <% end %>
-      <% end %>
-    <% end %>
-  <div>
+    <div>
+  </div>
 </div>

@@ -14,6 +14,9 @@ class Article < ApplicationRecord
     end_date = start_date.end_of_month
     where(published_at: start_date..end_date)
   }
+  scope :search, -> (key) {
+    where('title LIKE ? OR body LIKE ?', "%#{key}%", "%#{key}%")
+  }
 
   def prev_article
     @prev_article ||= book.articles.published.where('published_at < ?', published_at).order(published_at: :desc).first

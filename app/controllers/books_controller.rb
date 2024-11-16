@@ -10,10 +10,28 @@ class BooksController < ApplicationController
 
     year = params[:year].to_i if params[:year].present?
     month = params[:month].to_i if params[:month].present?
-    if year.present? && month.present?
-      @articles = @articles.with_year_month(year, month)
-    elsif year.present?
-      @articles = @articles.with_year(year)
-    end
+    @articles = filter_by_year_month(@articles, year, month)
+
+    search_param = params[:search]
+    @articles = filter_by_seach_params(@articles, search_param)
   end
+
+  private
+    def filter_by_year_month(articles, year, month)
+      if year.present? && month.present?
+        articles.with_year_month(year, month)
+      elsif year.present?
+        articles.with_year(year)
+      else
+        articles
+      end
+    end
+
+    def filter_by_seach_params(articles, search_param)
+      search_keys = search_param.to_s.split(/\s+/)
+      search_keys.each do |key|
+        articles = articles.search(key)
+      end
+      articles
+    end
 end
