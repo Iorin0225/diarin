@@ -42,7 +42,8 @@ namespace :import_wordpress_xml do
       }
     end
 
-    Article.delete_all
+    # Article.delete_all
+    book.articles.delete_all
     Article.insert_all(insert_bulk_data)
     pp 'done'
 

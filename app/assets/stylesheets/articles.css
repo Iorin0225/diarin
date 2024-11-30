@@ -19,7 +19,7 @@
       font-weight: normal;
       font-size: 1.5rem;
 
-      margin: 0;
+      margin: 0 0 1rem;
       padding-bottom: .2rem;
       border-bottom: 1px dotted var(--color-ink);
     }
