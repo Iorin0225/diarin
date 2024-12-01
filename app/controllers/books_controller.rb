@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  allow_unauthenticated_access
+
   def index
     @books = Book.published
   end
