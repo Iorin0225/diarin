@@ -28,10 +28,16 @@
     <%= tag.div id: controller_name do %>
       <%= yield %>
     <% end %>
-  <% if authenticated? %>
     <div id="session-menu">
-      Login as <span class="user-label"><%= Current.user.email_address %></span>
+      <% if authenticated? %>
+        <%= link_to user_path(Current.user) do %>
+          Login as <span class="user-label"><%= Current.user.email_address %></span>
+        <% end %>
+      <% else %>
+        <%= link_to new_session_path, class: "hidden" do %>
+          Login
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
   </body>
 </html>

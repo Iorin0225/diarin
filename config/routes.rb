@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
 
-  resource :session
+  resource :session, except: [:show]
   resources :passwords, param: :token
 
   resources :books, only: [:index, :show], param: :slug do
@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   end
   resources :articles, only: [:index, :show]
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 end

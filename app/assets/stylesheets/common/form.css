@@ -1,5 +1,5 @@
 form {
-  input[type="text"], input[type="password"], input[type="email"] {
+  :is(input[type="text"], input[type="password"], input[type="email"]) {
     padding: .5rem;
     border: 1px solid var(--color-subtle-dark);
     border-radius: 10px;
@@ -14,7 +14,7 @@ form {
     }
   }
 
-  button, input[type="submit"] {
+  :is(button, input[type="submit"]) {
     cursor: pointer;
 
     padding: .5rem;

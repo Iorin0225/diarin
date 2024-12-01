@@ -1,6 +1,10 @@
-<h1>Diarin</h1>
+<h1>
+  <%= link_to root_path do %>
+    Diarin
+  <% end %>
+</h1>
 
-<div class="login-form">
+<div class="simple-form">
   <%= form_with model: @user, url: users_path do |form| %>
     <%= tag.div(flash[:alert], class: "flash flash--alert") if flash[:alert] %>
     <%= tag.div(flash[:notice], class: "flash flash--notice") if flash[:notice] %>

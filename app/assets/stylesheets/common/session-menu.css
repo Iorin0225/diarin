@@ -1,9 +1,27 @@
 #session-menu {
   position: absolute;
   top: var(--block-space);
-  left: var(--block-space);
+  left: var(--block-space-half);
 
   font-size: .65rem;
+
+  .hidden {
+    color: var(--color-bg);
+    transition: color 300ms;
+  }
+
+  :is(a) {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: .5rem;
+
+    border-radius: 10px;
+
+    &:hover {
+      color: var(--color-ink);
+      background: var(--color-subtle-dark);
+    }
 
   .user-label {
     font-size: .8rem;
