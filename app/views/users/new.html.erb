@@ -1,14 +1,14 @@
 <h1>Diarin</h1>
 
 <div class="login-form">
-  <%= form_with url: session_path do |form| %>
+  <%= form_with model: @user, url: users_path do |form| %>
     <%= tag.div(flash[:alert], class: "flash flash--alert") if flash[:alert] %>
     <%= tag.div(flash[:notice], class: "flash flash--notice") if flash[:notice] %>
 
+    <%= form.text_field :display_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter display name", value: params[:display_name] %>
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
-    <%= form.submit "Sign in" %>
-    <%= link_to "Forgot password?", new_password_path %>
-    <%= link_to "Sign up", new_user_path %>
+    <%= form.submit "Register" %>
+    <%= link_to "Already have an account?", new_session_path %>
   <% end %>
 </div>

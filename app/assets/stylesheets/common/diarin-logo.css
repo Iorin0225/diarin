@@ -1,7 +1,7 @@
 #diain-logo {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: var(--block-space);
+  top: var(--block-space);
 
   display: grid;
   font-size: .8rem;

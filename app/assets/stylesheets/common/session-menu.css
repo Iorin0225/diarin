@@ -1,0 +1,11 @@
+#session-menu {
+  position: absolute;
+  top: var(--block-space);
+  left: var(--block-space);
+
+  font-size: .65rem;
+
+  .user-label {
+    font-size: .8rem;
+  }
+}

@@ -28,5 +28,10 @@
     <%= tag.div id: controller_name do %>
       <%= yield %>
     <% end %>
+  <% if authenticated? %>
+    <div id="session-menu">
+      Login as <span class="user-label"><%= Current.user.email_address %></span>
+    </div>
+  <% end %>
   </body>
 </html>
