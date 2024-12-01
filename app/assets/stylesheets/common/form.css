@@ -1,0 +1,40 @@
+form {
+  input[type="text"], input[type="password"], input[type="email"] {
+    padding: .5rem;
+    border: 1px solid var(--color-subtle-dark);
+    border-radius: 10px;
+    width: 100%;
+
+    background: var(--color-bg);
+    color: var(--color-ink);
+
+    &:focus, &:hover {
+      border-color: var(--color-bg);
+      box-shadow: none;
+    }
+  }
+
+  button, input[type="submit"] {
+    cursor: pointer;
+
+    padding: .5rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--color-subtle-dark);
+    color: var(--color-ink);
+
+    &:hover {
+      background: var(--color-subtle-light);
+    }
+  }
+
+  .flash {
+    &.flash--alert {
+      color: var(--color-negative);
+    }
+
+    &.flash--notice {
+      color: var(--color-positive);
+    }
+  }
+}
