@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_01_022502) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_07_004242) do
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_01_022502) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -52,5 +53,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_01_022502) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "books", "users", column: "author_user_id"
   add_foreign_key "sessions", "users"
 end
