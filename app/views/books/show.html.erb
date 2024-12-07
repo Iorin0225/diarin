@@ -18,6 +18,13 @@
     <%= render partial: 'books/article', collection: @articles, as: :article %>
   </div>
   <div class="sidebar-contents">
+    <% if authenticated? && @book.author == Current.user %>
+      <div class="manage-field book-first-view__item">
+        <%= link_to new_article_path(book_slug: @book.slug) do %>
+          <button class="manage-field__button">+Write New</button>
+        <% end %>
+      </div>
+    <% end %>
     <div class="search-field book-first-view__item">
       <%= form_with url: book_path(@book.slug), method: :get, html: { class: "search-field__form" } do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search articles", class: "search-field__input" %>

@@ -133,6 +133,30 @@
     }
   }
 
+  .manage-field {
+    font-size: .8rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .manage-field__button {
+      cursor: pointer;
+      font-family: var(--font-mono);
+
+      padding: .5rem 1rem;
+      border: 1px solid var(--color-ink);
+      border-radius: 10px;
+      background: var(--color-bg);
+      color: var(--color-ink);
+
+      &:hover {
+        background: var(--color-subtle-dark);
+      }
+    }
+  }
+
   .search-field {
     font-size: .8rem;
     font-family: var(--font-mono);

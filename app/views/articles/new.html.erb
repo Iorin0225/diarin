@@ -1,0 +1,12 @@
+<div id="book-title-wrapper">
+  <%= link_to book_path(@article.book) do %>
+    <div id="book-title">
+      <h1><%= @article.book.title %></h1>
+      <h2><%= @article.book.description %></h2>
+    </div>
+  <% end %>
+</div>
+
+<div class="article-editor simple-form">
+<%= render "editor", article: @article, books: @books %>
+</div>

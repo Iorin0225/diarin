@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  OFFICIAL_STATUSES = %w[draft publish private deleted]
+
   belongs_to :book
 
   # scope :published, -> { where('published_at < ?', Time.zone.now) }

@@ -6,6 +6,7 @@ html, body {
   --hover-color: var(--color-subtle-dark);
   --hover-size: 0.15rem;
   --hover-filter: brightness(1);
+  --hover-transition: box-shadow 150ms ease, outline-offset 150ms ease, background-color 150ms ease, opacity 150ms ease, filter 150ms ease;
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +35,7 @@ a:not([class]) {
   caret-color: var(--color-link);
   text-decoration: none;
   touch-action: manipulation;
-  transition: box-shadow 150ms ease, outline-offset 150ms ease, background-color 150ms ease, opacity 150ms ease, filter 150ms ease;
+  transition: var(--hover-transition);
 
   /* Hover */
   @media (any-hover: hover) {
