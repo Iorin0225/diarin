@@ -70,6 +70,8 @@ namespace :import_wordpress_xml do
       article.update(body: body)
     end
 
+    Article.where('title like ?', 'http%').destroy_all
+
     puts 'Done!'
   end
 end
