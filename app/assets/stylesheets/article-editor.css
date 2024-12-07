@@ -1,0 +1,22 @@
+.article-editor {
+
+  :is(form) {
+    width: 90vw;
+
+    :is(textarea) {
+      height: 50vh;
+      padding: .5rem;
+
+      background: var(--color-bg);
+      color: var(--color-ink);
+    }
+
+    :is(select) {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      position: relative;
+    }
+  }
+}

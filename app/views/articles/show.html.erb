@@ -31,4 +31,16 @@
       <% end %>
     </div>
   </div>
+  <% if authenticated? && Current.user == @article.book.author %>
+    <div class="article__action-buttons">
+      <div>
+        <%= link_to "編集", edit_article_path(@article) %>
+      </div>
+      <div>
+        <% if @article.status != 'deleted' %>
+          <%= link_to "削除", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "後悔しませんね？"} %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
 </div>
