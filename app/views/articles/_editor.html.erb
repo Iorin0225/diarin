@@ -6,7 +6,7 @@
   <%= form.select :book_id, options_for_select(books.map { |book| [book.title, book.id] }, article.book_id), required: true %>
   <%= form.text_field :title, required: true, autofocus: true, autocomplete: "title", placeholder: "Enter title", value: article.title %>
   <%= form.text_area :body, required: true, autocomplete: "content", placeholder: "Enter content", value: article.body %>
-  <%= form.select :status, options_for_select(Article::OFFICIAL_STATUSES.map { |status| [status, status] }, article.status), include_blank: false %>
+  <%= form.select :status, options_for_select(Article::OFFICIAL_STATUSES.map { |status| [status, status] }, (article.status || 'publish')), include_blank: false %>
   <%= form.text_field :published_at, required: true, autocomplete: "published_at", placeholder: "Enter published_at", value: (article.published_at || Time.current).strftime("%Y-%m-%d %H:%M:%S") %>
   <%= form.submit "Save" %>
 <% end %>
