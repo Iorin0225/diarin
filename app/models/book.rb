@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  belongs_to :author, class_name: 'User', foreign_key: :author_user_id
   has_many :articles, dependent: :destroy
 
   scope :published, -> { where('published_at < ?', Time.zone.now) }
