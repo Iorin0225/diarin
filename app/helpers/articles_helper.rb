@@ -25,6 +25,7 @@ module ArticlesHelper
 
     youtube_urls = body_html.scan(/https:\/\/www.youtube.com\/watch\?v=[\w-]+/)
     youtube_urls += body_html.scan(/https:\/\/youtu.be\/[\w-]+/)
+    youtube_urls += body_html.scan(/https:\/\/www.youtube.com\/live\/.+$/)
     body_html = youtube_urls.inject(body_html) do |html, url|
       html.gsub(url, youtube_embed(url))
     end
@@ -33,10 +34,13 @@ module ArticlesHelper
   def youtube_embed(url)
     if url.include?('youtu.be')
       video_id = url.split('/').last
+    elsif url.include?('live')
+      video_id = url.split('/').last
     else
       video_id = url.split('v=').last
     end
     embed_url = "https://www.youtube.com/embed/#{video_id}"
+    puts "HAHAHA!: #{embed_url}"
     content_tag :iframe, '', src: embed_url
   end
 
