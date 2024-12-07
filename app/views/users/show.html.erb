@@ -17,5 +17,17 @@
     </dl>
   </div>
 
+  <div class="writing-books">
+    <h2>Books</h2>
+    <% if @user.books.empty? %>
+      <p>No books yet.</p>
+    <% else %>
+      <dl>
+        <% @user.books.each do |book| %>
+          <dt><%= book.title %></dt>
+          <dd><%= link_to 'Show', book %></dd>
+        <% end %>
+      </dl>
+    <% end %>
   <%= button_to 'Sign Out', session_path, method: :delete %>
 </div>

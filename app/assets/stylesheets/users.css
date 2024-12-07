@@ -28,19 +28,23 @@
       font-family: var(--font-mono);
     }
 
+    :is(dl, p) {
+      border: 1px solid var(--color-subtle-dark);
+      border-radius: 10px;
+      padding: var(--block-space);
+
+    }
+
     :is(dl) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--block-space);
       justify-content: center;
       align-items: center;
+    }
 
-      border: 1px solid var(--color-subtle-dark);
-      border-radius: 10px;
-      padding: var(--block-space);
-
-      :is(dt, dd) {
-      }
+    :is(p) {
+      text-align: center;
     }
 
     :is(button) {
