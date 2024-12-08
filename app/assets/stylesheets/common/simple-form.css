@@ -13,6 +13,9 @@
       border-radius: 10px;
       padding: var(--block-space);
 
+      width: 36rem;
+      max-width: 95vw;
+
       :is(button, input[type="submit"]) {
         width: 100%;
       }

@@ -20,7 +20,10 @@
     <% if author?(@book) %>
       <div class="manage-field book-first-view__item">
         <%= link_to new_article_path(book_slug: @book.slug) do %>
-          <button class="manage-field__button">+Write New</button>
+          <button class="manage-field__button">+ Write New</button>
+        <% end %>
+        <%= link_to edit_book_path(@book.slug) do %>
+          <button class="manage-field__button">Book Config</button>
         <% end %>
       </div>
     <% end %>

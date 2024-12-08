@@ -10,13 +10,5 @@
       background: var(--color-bg);
       color: var(--color-ink);
     }
-
-    :is(select) {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-
-      position: relative;
-    }
   }
 }
