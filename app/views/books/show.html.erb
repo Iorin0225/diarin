@@ -18,7 +18,7 @@
     <%= render partial: 'books/article', collection: @articles, as: :article %>
   </div>
   <div class="sidebar-contents">
-    <% if authenticated? && @book.author == Current.user %>
+    <% if author?(@book) %>
       <div class="manage-field book-first-view__item">
         <%= link_to new_article_path(book_slug: @book.slug) do %>
           <button class="manage-field__button">+Write New</button>

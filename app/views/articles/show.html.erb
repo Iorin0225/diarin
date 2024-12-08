@@ -31,7 +31,7 @@
       <% end %>
     </div>
   </div>
-  <% if authenticated? && Current.user == @article.book.author %>
+  <% if author?(@article) %>
     <div class="article__action-buttons">
       <div>
         <%= link_to "編集", edit_article_path(@article) %>
