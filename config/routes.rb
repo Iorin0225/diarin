@@ -12,15 +12,20 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
 
+  # [Passing from Old WordPress URLs]
+  get "archives/:book_slug/:id" => "wordpress_passers#show", as: :wordpress_passer
+
+  # [User Auths (Default)]
   resource :session, except: [:show]
   resources :passwords, param: :token
 
+  # [User Features]
+  resources :users, only: [:new, :create, :show]
+
+  # [Book Features]
   resources :books, only: [:index, :show], param: :slug do
     get ':year', to: 'books#show', on: :member, as: :show_with_year, constraints: { year: /\d{4}/ }
     get ':year/:month', to: 'books#show', on: :member, as: :show_with_year_and_month, constraints: { year: /\d{4}/, month: /\d{1,2}/ }
   end
-  resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :users, only: [:new, :create, :show]
-
-  get "archives/:book_slug/:id" => "wordpress_passers#show", as: :wordpress_passer
+  resources :articles
 end
