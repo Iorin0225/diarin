@@ -4,7 +4,6 @@
 
   .article {
     font-family: var(--font-mincho);
-    font-size: .85rem;
     line-height: 1.5rem;
     letter-spacing: .12em;
 
@@ -17,7 +16,7 @@
 
     .article__title{
       font-weight: normal;
-      font-size: 1.5rem;
+      font-size: var(--font-large-responsive);
 
       margin: 0 0 1rem;
       padding-bottom: .2rem;
@@ -25,6 +24,11 @@
     }
 
     .article__body {
+      font-size: var(--font-x-small-responsive);
+
+      @media (max-width: 70ch) {
+        font-size: var(--font-small-responsive);
+      }
 
       :is(img), :is(iframe) {
         max-width: 80ch;
@@ -48,7 +52,7 @@
       gap: .5rem;
 
       :is(a) {
-        font-size: .75rem;
+        font-size: var(--font-x-small-responsive);
         text-transform: uppercase;
         color: var(--color-ink);
         cursor: pointer;

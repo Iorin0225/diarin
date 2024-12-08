@@ -17,14 +17,16 @@
     align-items: center;
     justify-content: center;
     gap: .2rem;
-
     max-width: 20rem;
     border-radius: 10px;
     margin: 1rem 0;
     padding: 1rem 2rem;
     border: 1px solid var(--color-ink);
-
     transition: var(--hover-transition);
+
+    @media (max-width: 70ch) {
+      margin: 0;
+    }
 
     &:hover {
       background: var(--color-subtle-dark);
@@ -36,15 +38,14 @@
     }
 
     :is(h1) {
+      font-size: var(--font-x-large-responsive);
       border-bottom: 1px solid var(--color-ink);
       font-weight: 400;
     }
 
     :is(h2) {
-      font-size: .8rem;
+      font-size: var(--font-x-small-responsive);
       font-weight: 400;
-
-      /* color: var(--color-subtle-dark); */
     }
   }
 }

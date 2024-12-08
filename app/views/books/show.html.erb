@@ -1,16 +1,15 @@
+<div id="diain-logo">
+  <%= link_to books_path do %>
+    produced by
+    <span class="diarin-name">Diarin</span>
+  <% end %>
+</div>
 <div id="book-title-wrapper">
   <%= link_to book_path(@book) do %>
     <div id="book-title">
       <h1><%= @book.title %></h1>
       <h2><%= @book.description %></h2>
     </div>
-  <% end %>
-</div>
-
-<div id="diain-logo">
-  <%= link_to books_path do %>
-    produced by
-    <span class="diarin-name">Diarin</span>
   <% end %>
 </div>
 <div class="book-first-view">

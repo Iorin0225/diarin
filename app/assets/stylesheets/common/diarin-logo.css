@@ -3,8 +3,17 @@
   right: var(--block-space);
   top: var(--block-space);
 
+  @media (max-width: 70ch) {
+    position: relative;
+    right: unset;
+    top: unset;
+
+    display: flex;
+    justify-content: center;
+  }
+
   display: grid;
-  font-size: .8rem;
+  font-size: var(--font-x-small-responsive);
 
   :is(a) {
     font-family: var(--font-sans);
@@ -21,6 +30,6 @@
   }
 
   .diarin-name {
-    font-size: 1.2rem;
+    font-size: var(--font-medium-responsive);
   }
 }

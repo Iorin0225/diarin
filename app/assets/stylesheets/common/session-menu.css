@@ -1,4 +1,8 @@
 #session-menu {
+  @media (max-width: 70ch) {
+    display: none;
+  }
+
   position: absolute;
   top: var(--block-space);
   left: var(--block-space-half);
