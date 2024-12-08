@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  allow_unauthenticated_access
+  allow_unauthenticated_access only: [:index, :show]
 
   def index
     @books = Book.published
@@ -16,6 +16,19 @@ class BooksController < ApplicationController
 
     search_param = params[:search]
     @articles = filter_by_seach_params(@articles, search_param)
+  end
+
+  def edit
+    @book = Book.find_by(slug: params[:slug])
+  end
+
+  def update
+    @book = Book.find_by(slug: params[:slug])
+    if @book.update(book_params)
+      redirect_to book_path(@book.slug)
+    else
+      render :edit
+    end
   end
 
   private
@@ -35,5 +48,9 @@ class BooksController < ApplicationController
         articles = articles.search(key)
       end
       articles
+    end
+
+    def book_params
+      params.require(:book).permit(:title, :description, :theme_slug)
     end
 end
