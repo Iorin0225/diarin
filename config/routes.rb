@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get ':year/:month', to: 'books#show', on: :member, as: :show_with_year_and_month, constraints: { year: /\d{4}/, month: /\d{1,2}/ }
   end
   resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-
   resources :users, only: [:new, :create, :show]
+
+  get "archives/:book_slug/:id" => "wordpress_passers#show", as: :wordpress_passer
 end
