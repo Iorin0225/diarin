@@ -1,4 +1,6 @@
 class WordpressPassersController < ApplicationController
+  allow_unauthenticated_access only: :show
+
   before_action :set_book, only: [:show]
   before_action :set_article, only: [:show]
 
