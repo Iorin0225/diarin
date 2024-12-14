@@ -17,21 +17,23 @@
 
     .book-list__item {
       position: relative;
-      display: inline-flex;
       margin-inline: auto;
 
       margin: 0;
 
       .book-list__item__link {
         border-radius: 10px;
-        content: "";
-        inset: 0;
-        position: absolute;
-        z-index: 1;
 
         &:hover {
-          background: var(--color-subtle-dark);
-          opacity: 0.5;
+          .book {
+          background: var(--color-subtle);
+          }
+        }
+
+        &:active {
+          .book {
+            opacity: 0.8;
+          }
         }
       }
     }
@@ -55,7 +57,7 @@
       font-size: var(--font-small-responsive);
 
       /* 480 x 640 */
-      width: 20rem;
+      max-width: 20rem;
       aspect-ratio: 3 / 4;
 
       :is(h2, p) {

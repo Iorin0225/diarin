@@ -1,9 +1,10 @@
 <% cache book do %>
   <div class="book-list__item">
-    <%= link_to '', book_path(book), class: 'book-list__item__link' %>
-    <figure class="book">
-      <h2><%= book.title %></h2>
-      <p><%= book.description %></p>
-    </figure>
+    <%= link_to book_path(book), class: 'book-list__item__link' do %>
+      <figure class="book">
+        <h2><%= book.title %></h2>
+        <p><%= book.description %></p>
+      </figure>
+    <% end %>
   </div>
 <% end %>

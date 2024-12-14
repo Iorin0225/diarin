@@ -6,7 +6,7 @@
           <%= article.title %>
         </div>
         <div class='article__published-at'>
-          <%= format_datetime(article.published_at) %>
+          <%= date_only(article.published_at) %>
         </div>
       </div>
     <% end %>
