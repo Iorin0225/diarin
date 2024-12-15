@@ -10,6 +10,9 @@
     </div>
     <p class="article__meta">
       <%= date_only(article.published_at) || article.status %>
+      <% if author?(article) %>
+        <span>（<%= body_with_pre_wrap(article).length %>文字）</span>
+      <% end %>
       <%= debug_id(article) %>
     </p>
     <div class="article__action-buttons">
