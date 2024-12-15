@@ -15,9 +15,11 @@
 
 <div class="book-first-view">
   <div class="main-contents">
-    <div class="book-first-view__item article">
-      <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
-    </div>
+    <% if @book.first_view_type == 'latest_article' %>
+      <div class="book-first-view__item article">
+        <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
+      </div>
+    <% end %>
     <div class="article-list book-first-view__item">
       <%= render partial: 'books/article', collection: @articles, as: :article %>
     </div>
