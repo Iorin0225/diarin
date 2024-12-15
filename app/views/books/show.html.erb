@@ -12,9 +12,15 @@
     </div>
   <% end %>
 </div>
+
 <div class="book-first-view">
-  <div class="article-list book-first-view__item">
-    <%= render partial: 'books/article', collection: @articles, as: :article %>
+  <div class="main-contents">
+    <div class="book-first-view__item article">
+      <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
+    </div>
+    <div class="article-list book-first-view__item">
+      <%= render partial: 'books/article', collection: @articles, as: :article %>
+    </div>
   </div>
   <div class="sidebar-contents">
     <% if author?(@book) %>

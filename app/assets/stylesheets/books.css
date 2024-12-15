@@ -92,10 +92,38 @@
     }
   }
 
+  .main-contents {
+    display: grid;
+    gap: var(--block-space);
+    grid-template-columns: minmax(300px, 1fr);
+    max-width: 50rem;
+  }
+
   .sidebar-contents {
     display: grid;
     gap: var(--block-space);
     grid-template-columns: minmax(300px, 1fr);
+  }
+
+  .article {
+    .article__title {
+      text-align: left;
+      font-size: 1.2rem;
+
+      :is(a) {
+        display: block;
+        text-decoration: none;
+        color: var(--color-ink);
+
+        &:hover {
+          background: var(--color-subtle-dark);
+        }
+      }
+    }
+
+    .article__meta, .article__action-buttons {
+      margin: 0;
+    }
   }
 
   .article-list {
@@ -121,16 +149,16 @@
           box-shadow: none;
 
           /* ↓I don't know why but it doesn't work */
-          /* background: var(--color-subtle-dark); */
+          background: var(--color-subtle-dark);
 
-          .article {
-            /* background: var(--color-subtle-dark); */
+          .article-list__item__line {
+            background: var(--color-subtle-dark);
           }
         }
       }
     }
 
-    .article {
+    .article-list__item__line {
       display: flex;
       flex-direction: row;
       align-items: center;

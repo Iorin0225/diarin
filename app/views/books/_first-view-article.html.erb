@@ -1,0 +1,40 @@
+<% cache article do %>
+  <div class="article">
+    <h1 class="article__title">
+    <%= link_to article_path(article) do %>
+      <%= article.title %>
+    <% end %>
+    </h1>
+    <div class="article__body">
+      <%= body_with_pre_wrap(article) %>
+    </div>
+    <p class="article__meta">
+      <%= date_only(article.published_at) || article.status %>
+      <%= debug_id(article) %>
+    </p>
+    <div class="article__action-buttons">
+      <div>
+        <% if article.prev_article.present? %>
+          <%= link_to "前へ", article_path(article.prev_article) %>
+        <% end %>
+      </div>
+      <div>
+        <% if article.next_article.present? %>
+          <%= link_to "後へ", article_path(article.next_article) %>
+        <% end %>
+      </div>
+    </div>
+    <% if author?(article) %>
+      <div class="article__action-buttons">
+        <div>
+          <%= link_to "編集", edit_article_path(article) %>
+        </div>
+        <div>
+          <% if article.status != 'deleted' %>
+            <%= link_to "削除", article_path(article), data: {turbo_method: :delete, turbo_confirm: "後悔しませんね？"} %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
