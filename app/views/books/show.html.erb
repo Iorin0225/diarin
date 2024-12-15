@@ -15,7 +15,7 @@
 
 <div class="book-first-view">
   <div class="main-contents">
-    <% if @book.first_view_type == 'latest_article'&& @articles.present? %>
+    <% if @book.first_view_type == 'latest_article'&& @articles.present? && @is_first_view %>
       <div class="book-first-view__item article">
         <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
       </div>

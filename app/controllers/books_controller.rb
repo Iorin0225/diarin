@@ -16,6 +16,8 @@ class BooksController < ApplicationController
 
     search_param = params[:search]
     @articles = filter_by_seach_params(@articles, search_param)
+
+    @is_first_view = first_view?
   end
 
   def edit
@@ -32,6 +34,10 @@ class BooksController < ApplicationController
   end
 
   private
+    def first_view?
+      (params.keys - %w[controller action slug]).empty?
+    end
+
     def filter_by_year_month(articles, year, month)
       if year.present? && month.present?
         articles.with_year_month(year, month)
