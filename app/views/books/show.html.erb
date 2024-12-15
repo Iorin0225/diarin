@@ -15,13 +15,17 @@
 
 <div class="book-first-view">
   <div class="main-contents">
-    <% if @book.first_view_type == 'latest_article' %>
+    <% if @book.first_view_type == 'latest_article'&& @articles.present? %>
       <div class="book-first-view__item article">
         <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
       </div>
     <% end %>
     <div class="article-list book-first-view__item">
-      <%= render partial: 'books/article', collection: @articles, as: :article %>
+      <% if @articles.blank? %>
+        はっはっは。見つかりませんでしたよ。
+      <% else %>
+        <%= render partial: 'books/article', collection: @articles, as: :article %>
+      <% end %>
     </div>
   </div>
   <div class="sidebar-contents">

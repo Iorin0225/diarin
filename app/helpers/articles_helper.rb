@@ -1,9 +1,9 @@
 module ArticlesHelper
   def body_with_pre_wrap(article)
-    safe_html = sanitize(body_with_embedding(article), tags: %w(blockquote img a script iframe), attributes: %w(class href src charset async data-instgrm-permalink))
+    safe_html = sanitize(body_with_embedding(article), tags: %w(blockquote img a script iframe br), attributes: %w(class href src charset async data-instgrm-permalink))
     safe_html.strip!
 
-    content_tag :span, safe_html, style: 'white-space: pre-wrap;'
+    content_tag :span, safe_html.html_safe, style: 'white-space: pre-wrap;'
   end
 
   def body_with_embedding(article)
