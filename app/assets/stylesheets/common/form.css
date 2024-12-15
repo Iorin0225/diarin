@@ -20,6 +20,8 @@ form {
     appearance: none;
 
     position: relative;
+
+    cursor: pointer;
   }
 
   :is(button, input[type="submit"]) {

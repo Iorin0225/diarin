@@ -4,6 +4,8 @@ class Book < ApplicationRecord
 
   scope :published, -> { where('published_at < ?', Time.zone.now) }
 
+  FIRST_VIEW_TYPES = %w[list latest_article].freeze
+
   def to_param
     slug
   end
