@@ -8,6 +8,7 @@ module ArticlesHelper
 
   def body_with_embedding(article)
     body_html = article.body
+    body_html = removing_wordpress_tags(body_html)
 
     twitter_urls = body_html.scan(/https:\/\/twitter.com\/\w+\/status\/\d+/)
     body_html = twitter_urls.inject(body_html) do |html, url|
@@ -64,6 +65,10 @@ module ArticlesHelper
       content_tag(:a, '', href: url)
     end
     embed_body + content_tag(:script, '', src: 'https://platform.twitter.com/widgets.js', charset: 'utf-8', async: true)
+  end
+
+  def removing_wordpress_tags(body)
+    body.gsub(/\[caption.*?\](.*?)\[\/caption\]/, '\1')
   end
 
   def debug_id(article)
