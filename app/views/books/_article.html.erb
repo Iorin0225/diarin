@@ -2,10 +2,10 @@
   <div class='article-list__item'>
     <%= link_to article_path(article), class: 'article-list__item__link' do %>
       <div class='article-list__item__line'>
-        <div class='article__title'>
+        <div class='article-list__item__title'>
           <%= article.title %>
         </div>
-        <div class='article__published-at'>
+        <div class='article-list__item__published-at'>
           <%= date_only(article.published_at) %>
         </div>
       </div>
