@@ -10,13 +10,13 @@
   gap: 1rem;
 
   &.article--default {
-    font-family: var(--font-sans);
-    letter-spacing: .08em;
+    font-family: var(--font-mincho);
+      letter-spacing: .12em;
   }
 
   &.article--casual {
-    font-family: var(--font-mincho);
-    letter-spacing: .12em;
+    font-family: var(--font-sans);
+    letter-spacing: .08em;
   }
 
   .article__title{

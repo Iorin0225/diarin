@@ -141,13 +141,13 @@
     padding: var(--block-space);
 
     &.article-list--default {
-      font-family: var(--font-sans);
-      letter-spacing: .08em;
+      font-family: var(--font-mincho);
+    letter-spacing: .12em;
     }
 
     &.article-list--casual {
-      font-family: var(--font-mincho);
-      letter-spacing: .12em;
+      font-family: var(--font-sans);
+        letter-spacing: .08em;
     }
 
     .article-list__item {
