@@ -20,13 +20,13 @@
         <%= render partial: 'books/first-view-article', locals: { article: @articles.first } %>
       </div>
     <% end %>
-    <div class="article-list book-first-view__item">
+    <%= tag.div class: "book-first-view__item article-list article-list--#{@book.theme_slug}" do %>
       <% if @articles.blank? %>
         はっはっは。見つかりませんでしたよ。
       <% else %>
         <%= render partial: 'books/article', collection: @articles, as: :article %>
       <% end %>
-    </div>
+    <% end %>
   </div>
   <div class="sidebar-contents">
     <% if author?(@book) %>

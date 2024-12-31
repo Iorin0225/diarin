@@ -7,7 +7,7 @@
   <% end %>
 </div>
 
-<div class="article">
+<%= tag.div class: "article article--#{@article.book.theme_slug}" do %>
   <h1 class="article__title"><%= @article.title %></h1>
   <div class="article__body">
     <%= body_with_pre_wrap(@article) %>
@@ -46,4 +46,4 @@
       </div>
     </div>
   <% end %>
-</div>
+<% end %>

@@ -1,5 +1,5 @@
 <% cache article do %>
-  <div class="article">
+  <%= tag.div class: "article article--#{article.book.theme_slug}" do %>
     <h1 class="article__title">
     <%= link_to article_path(article) do %>
       <%= article.title %>
@@ -39,5 +39,5 @@
         </div>
       </div>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

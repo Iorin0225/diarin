@@ -1,7 +1,6 @@
 .article {
   font-family: var(--font-mincho);
   line-height: 1.5rem;
-  letter-spacing: .12em;
 
   padding: 2rem 1rem;
   max-width: 50rem;
@@ -9,6 +8,16 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  &.article--default {
+    font-family: var(--font-sans);
+    letter-spacing: .08em;
+  }
+
+  &.article--casual {
+    font-family: var(--font-mincho);
+    letter-spacing: .12em;
+  }
 
   .article__title{
     font-weight: normal;
