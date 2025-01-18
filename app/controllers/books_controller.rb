@@ -5,6 +5,21 @@ class BooksController < ApplicationController
     @books = Book.published
   end
 
+  def new
+    @book = Book.new
+  end
+
+  def create
+    @book = Book.new(book_params)
+    @book.author = Current.user
+    if @book.save
+      redirect_to book_path(@book.slug)
+    else
+      flash.now[:alert] = @book.errors.full_messages.join("\n")
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show
     @book = Book.find_by(slug: params[:slug])
     redirect_to books_path if @book.blank?
@@ -57,6 +72,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :description, :theme_slug, :first_view_type)
+      params.require(:book).permit(:title, :description, :slug, :theme_slug, :first_view_type, :published_at)
     end
 end

@@ -1,0 +1,20 @@
+<% is_new = book.new_record? %>
+<% method = is_new ? :post : :patch %>
+<% url = is_new ? books_path : book_path(book) %>
+
+<div class="simple-form">
+  <%= form_with model: book, url: url, method: method do |form| %>
+    <%= tag.div(flash[:alert], class: "flash flash--alert") if flash[:alert] %>
+    <%= tag.div(flash[:notice], class: "flash flash--notice") if flash[:notice] %>
+
+    <% if is_new %>
+      <%= form.text_field :slug, requiresd: true, autofocus: true, placeholder: "Enter slug", value: book.slug %>
+    <% end %>
+    <%= form.text_field :title, requiresd: true, autofocus: true, placeholder: "Enter title", value: book.title %>
+    <%= form.text_field :description, required: true, autofocus: true, placeholder: "Enter description", value: book.description %>
+    <%= form.select :theme_slug, options_for_select(Theme::SLUGS, book.theme_slug), required: true %>
+    <%= form.select :first_view_type, options_for_select(Book::FIRST_VIEW_TYPES, book.first_view_type), required: true %>
+    <%= form.text_field :published_at, required: true, placeholder: "Enter published_at", value: (book.published_at || Time.current).strftime("%Y-%m-%d %H:%M:%S") %>
+    <%= form.submit "Save" %>
+  <% end %>
+</div>

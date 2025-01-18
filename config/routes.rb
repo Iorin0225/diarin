@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   # [Book Features]
-  resources :books, only: [:index, :show, :edit, :update], param: :slug do
+  resources :books, param: :slug do
     get ':year', to: 'books#show', on: :member, as: :show_with_year, constraints: { year: /\d{4}/ }
     get ':year/:month', to: 'books#show', on: :member, as: :show_with_year_and_month, constraints: { year: /\d{4}/, month: /\d{1,2}/ }
   end
