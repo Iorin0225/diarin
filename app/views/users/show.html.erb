@@ -1,4 +1,4 @@
-<h1>
+<h1 class='diarin-title'>
   <%= link_to root_path do %>
     Diarin
   <% end %>
@@ -19,15 +19,14 @@
 
   <div class="writing-books">
     <h2>Books</h2>
-    <% if @user.books.empty? %>
-      <p>No books yet.</p>
-    <% else %>
       <dl>
         <% @user.books.each do |book| %>
           <dt><%= book.title %></dt>
           <dd><%= link_to 'Show', book %></dd>
         <% end %>
+        <dt>New one?</dt>
+        <dd><%= link_to 'Create', new_book_path %></dd>
       </dl>
-    <% end %>
+  </div>
   <%= button_to 'Sign Out', session_path, method: :delete %>
 </div>

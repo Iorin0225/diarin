@@ -1,19 +1,4 @@
 #users {
-  h1 {
-    text-align: center;
-
-    :is(a) {
-      text-decoration: none;
-      color: var(--color-ink);
-      padding: var(--block-space-half);
-      border-radius: 10px;
-
-      &:hover {
-        background: var(--color-subtle-dark);
-      }
-    }
-  }
-
   .user-menu {
     display: grid;
     justify-content: center;
