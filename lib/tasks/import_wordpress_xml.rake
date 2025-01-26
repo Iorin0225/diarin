@@ -1,8 +1,12 @@
 namespace :import_wordpress_xml do
   desc "Import Wordpress XML in lib "
-  task import: :environment do
-    require 'rexml/document'
+  task :import, [:user_email_address] => :environment do |t, args|
 
+    require 'rexml/document'
+    email_address = args[:user_email_address]
+    author = User.find_by!(email_address: email_address)
+
+    puts "Author: #{author.display_name}"
     puts 'Importing Wordpress XML'
 
     file_path = Rails.root.join('lib', 'import_files', 'wordpress.xml')
@@ -14,6 +18,7 @@ namespace :import_wordpress_xml do
     pp "Start Importing #{blog.title}"
 
     book = Book.find_or_create_by!(title: blog.title) do |tmp_book|
+      tmp_book.author = author
       tmp_book.description = blog.description
       tmp_book.slug = blog.slug
       tmp_book.published_at = blog.published_at
