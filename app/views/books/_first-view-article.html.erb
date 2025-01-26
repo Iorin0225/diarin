@@ -1,12 +1,14 @@
 <% cache article do %>
   <%= tag.div class: "article article--#{article.book.theme_slug}" do %>
-    <h1 class="article__title">
-    <%= link_to article_path(article) do %>
-      <%= article.title %>
-    <% end %>
-    </h1>
-    <div class="article__body">
-      <%= body_with_pre_wrap(article) %>
+    <div class="article__content">
+      <h1 class="article__content__title">
+        <%= link_to article_path(article) do %>
+        <%= article.title %>
+      <% end %>
+      </h1>
+      <div class="article__content__body">
+        <%= body_with_pre_wrap(article) %>
+      </div>
     </div>
     <p class="article__meta">
       <%= date_only(article.published_at) || article.status %>

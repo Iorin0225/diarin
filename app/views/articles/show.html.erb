@@ -8,9 +8,11 @@
 </div>
 
 <%= tag.div class: "article article--#{@article.book.theme_slug}" do %>
-  <h1 class="article__title"><%= @article.title %></h1>
-  <div class="article__body">
-    <%= body_with_pre_wrap(@article) %>
+  <div class="article__content">
+    <h1 class="article__content__title"><%= @article.title %></h1>
+    <div class="article__content__body">
+      <%= body_with_pre_wrap(@article) %>
+    </div>
   </div>
   <p class="article__meta">
     <%= date_only(@article.published_at) || @article.status %>
