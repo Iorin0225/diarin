@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   scope :published, -> { where('published_at < ?', Time.zone.now) }
 
   FIRST_VIEW_TYPES = %w[list latest_article].freeze
+  COLORS = %w[auto red green blue yellow pink purple].freeze
 
   def to_param
     slug
