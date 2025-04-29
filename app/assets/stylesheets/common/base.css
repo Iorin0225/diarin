@@ -49,6 +49,7 @@ a:not([class]) {
     outline-width: var(--outline-size);
     outline-color: var(--outline-color, currentColor);
     outline-offset: var(--outline-offset, calc(var(--outline-size) * 2));
+    outline-style: solid;
   }
 
   &:where(:focus-visible):active {

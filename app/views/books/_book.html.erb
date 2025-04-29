@@ -1,10 +1,10 @@
 <% cache book do %>
-  <div class="book-list__item">
+  <%= tag.div class: ['book-list__item', "theme-color--#{book.color}"] do %>
     <%= link_to book_path(book), class: 'book-list__item__link' do %>
       <figure class="book">
         <h2><%= book.title %></h2>
         <p><%= book.description %></p>
       </figure>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

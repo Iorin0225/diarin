@@ -24,7 +24,7 @@
     <script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.en.N4A9eqvTwsI.O/m=client,plusone/rt=j/sv=1/d=1/ed=1/am=AACA/rs=AHpOoo_O6fwbR1aR8YHQkB3I0FTV0L0UIA/cb=gapi.loaded_0?le=scs" async=""></script>
   </head>
 
-  <body>
+  <%= tag.body class: "theme-color--#{theme_color}" do %>
     <%= tag.div id: controller_name do %>
       <%= yield %>
     <% end %>
@@ -39,5 +39,5 @@
         <% end %>
       <% end %>
     </div>
-  </body>
+  <% end %>
 </html>

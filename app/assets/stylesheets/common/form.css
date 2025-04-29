@@ -11,6 +11,11 @@ form {
     &:focus, &:hover {
       border-color: var(--color-bg);
       box-shadow: none;
+
+      outline-style: solid;
+      outline-width: var(--outline-size);
+      outline-color: var(--color-selected);
+      outline-color: var(--outline-color, currentColor);
     }
   }
 
