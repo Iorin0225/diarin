@@ -12,6 +12,8 @@
   --lch-blue-subtle-dark: 80% 0.08 255;
   --lch-blue-dark: 80% 0.08 255;
 
+  --lch-ink-blue: 54% 0.15 255;
+
   --lch-pink: 88% 0.1 20;
   --lch-pink-light: 95% 0.03 20;
   --lch-pink-subtle-light: 90% 0.06 20;
@@ -52,7 +54,7 @@
   --color-bg: oklch(var(--lch-gray-light));
   --color-ink: oklch(var(--lch-black));
   --color-ink-reversed: oklch(var(--lch-white));
-  --color-link: oklch(var(--lch-blue));
+  --color-link: oklch(var(--lch-ink-blue));
   --color-subtle-light: oklch(var(--lch-gray-light));
   --color-subtle: oklch(var(--lch-gray));
   --color-subtle-dark: oklch(var(--lch-gray-dark));
@@ -77,6 +79,8 @@
     --lch-blue-subtle-light: 30.11% 0.05 248;
     --lch-blue-subtle-dark: 42.25% 0.07 248;
     --lch-blue-dark: 42.25% 0.07 248;
+
+    --lch-ink-blue: 72.25% 0.16 248;
 
     --lch-pink: 60% 0.07 39;
     --lch-pink-light: 49% 0.03 39;
