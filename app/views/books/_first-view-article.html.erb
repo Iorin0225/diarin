@@ -1,4 +1,4 @@
-<% cache article do %>
+<% cache [article, author?(article)] do %>
   <%= tag.div class: "article article--#{article.book.theme_slug}" do %>
     <div class="article__content">
       <h1 class="article__content__title">
