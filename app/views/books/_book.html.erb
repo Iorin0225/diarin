@@ -3,7 +3,10 @@
     <%= link_to book_path(book), class: 'book-list__item__link' do %>
       <figure class="book">
         <h2><%= book.title %></h2>
-        <p><%= book.description %></p>
+        <div class="book__label">
+          <p class='book__label__description'><%= book.description %></p>
+          <p class='book__label__update'><%= book_updated_label(book) %></p>
+        </div>
       </figure>
     <% end %>
   <% end %>
