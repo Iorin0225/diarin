@@ -11,11 +11,13 @@ class Article < ApplicationRecord
     end_date = start_date.end_of_year
     where(published_at: start_date..end_date)
   }
+
   scope :with_year_month, -> (year, month) {
     start_date = Time.zone.local(year.to_i, month.to_i, 1).beginning_of_month
     end_date = start_date.end_of_month
     where(published_at: start_date..end_date)
   }
+
   scope :search, -> (key) {
     where('title LIKE ? OR body LIKE ?', "%#{key}%", "%#{key}%")
   }

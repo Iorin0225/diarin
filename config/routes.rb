@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     get ':year', to: 'books#show', on: :member, as: :show_with_year, constraints: { year: /\d{4}/ }
     get ':year/:month', to: 'books#show', on: :member, as: :show_with_year_and_month, constraints: { year: /\d{4}/, month: /\d{1,2}/ }
   end
+
+  # [Article Features]
   resources :articles
 end
