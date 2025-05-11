@@ -3,8 +3,7 @@ class Article < ApplicationRecord
 
   belongs_to :book
 
-  # scope :published, -> { where('published_at < ?', Time.zone.now) }
-  scope :published, -> { where(status: :publish) }
+  scope :published, -> { where(status: :publish).where('published_at < ?', Time.zone.now) }
 
   scope :with_year, -> (year) {
     start_date = Time.zone.local(year.to_i, 1, 1).beginning_of_year
