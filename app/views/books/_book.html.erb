@@ -1,11 +1,11 @@
-<% cache book do %>
+<% cache book_updated_label = book_updated_label(book) do %>
   <%= tag.div class: ['book-list__item'] do %>
     <%= link_to book_path(book), class: 'book-list__item__link' do %>
       <figure class="book">
         <h2><%= book.title %></h2>
         <div class="book__label">
           <p class='book__label__description'><%= book.description %></p>
-          <p class='book__label__update'><%= book_updated_label(book) %></p>
+          <p class='book__label__update'><%= book_updated_label %></p>
         </div>
       </figure>
     <% end %>
