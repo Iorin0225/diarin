@@ -1,4 +1,5 @@
-<% cache book, book_updated_label = book_updated_label(book) do %>
+<% book_updated_label = book_updated_label(book) %>
+<% cache "#{book.updated_at}-#{book_updated_label}" do %>
   <%= tag.div class: ['book-list__item'] do %>
     <%= link_to book_path(book), class: 'book-list__item__link' do %>
       <figure class="book">
