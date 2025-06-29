@@ -30,12 +30,12 @@
   </div>
   <div class="sidebar-contents">
     <% if author?(@book) %>
-      <div class="manage-field book-first-view__item">
+      <div class="manage-field actions-field book-first-view__item">
         <%= link_to new_article_path(book_slug: @book.slug) do %>
-          <button class="manage-field__button">+ Write New</button>
+          <button class="actions-field__button">+ Write New</button>
         <% end %>
         <%= link_to edit_book_path(@book.slug) do %>
-          <button class="manage-field__button">Book Config</button>
+          <button class="actions-field__button">Book Config</button>
         <% end %>
       </div>
     <% end %>
@@ -69,6 +69,11 @@
           <% end %>
         <% end %>
       <% end %>
-    <div>
+    </div>
+    <div class="subscribing-field actions-field actions-field--single-action book-first-view__item">
+      <%= link_to rss_book_path(@book, format: :rss) do %>
+        <button class="actions-field__button">+ RSS Feed</button>
+      <% end %>
+    </div>
   </div>
 </div>
