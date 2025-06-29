@@ -65,7 +65,7 @@
       }
 
       :is(img), :is(iframe) {
-        max-width: 80ch;
+        max-width: 80vw;
         max-height: 20rem;
 
         border: none;
