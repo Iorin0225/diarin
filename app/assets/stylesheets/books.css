@@ -207,7 +207,7 @@
     }
   }
 
-  .manage-field {
+  .actions-field {
     font-size: var(--font-x-small-responsive);
 
     display: flex;
@@ -215,9 +215,14 @@
     justify-content: space-around;
     gap: 1rem;
 
-    .manage-field__button {
+    &.actions-field--single-action {
+      flex-direction: column;
+    }
+
+    .actions-field__button {
       cursor: pointer;
       font-family: var(--font-mono);
+      width: 100%;
 
       padding: .5rem 1rem;
       border: 1px solid var(--color-ink);
