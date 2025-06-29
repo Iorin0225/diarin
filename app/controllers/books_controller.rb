@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  allow_unauthenticated_access only: [:index, :show]
+  allow_unauthenticated_access only: [:index, :show, :rss]
 
   def index
     @books = Book.published
@@ -45,6 +45,18 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.slug)
     else
       render :edit
+    end
+  end
+
+  def rss
+    @book = Book.find_by(slug: params[:slug])
+    # not found instead of redirecting
+    head :not_found and return if @book.blank?
+    @articles = @book.articles.published.order(published_at: :desc).limit(20)
+
+    respond_to do |format|
+      format.rss { render layout: false }
+      format.xml { render layout: false }
     end
   end
 
