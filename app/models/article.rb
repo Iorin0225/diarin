@@ -21,6 +21,17 @@ class Article < ApplicationRecord
     where('title LIKE ? OR body LIKE ?', "%#{key}%", "%#{key}%")
   }
 
+  def as_json(options = {})
+    super(options.merge(
+      except: [:created_at, :updated_at, :imported_id, book_id],
+      methods: [:book_slug]
+    ))
+  end
+
+  def book_slug
+    book&.slug || ''
+  end
+
   def prev_article
     @prev_article ||= book.articles.published.where('published_at < ?', published_at).order(published_at: :desc).first
   end

@@ -32,4 +32,11 @@ Rails.application.routes.draw do
 
   # [Article Features]
   resources :articles
+
+  # [API Features]
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: [:index, :show]
+    end
+  end
 end
