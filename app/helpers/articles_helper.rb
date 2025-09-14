@@ -1,4 +1,8 @@
 module ArticlesHelper
+  def artcile_char_counts(article)
+    strip_tags(article.body).length
+  end
+
   def body_with_pre_wrap(article)
     safe_html = sanitize(body_with_embedding(article), tags: %w(blockquote img a script iframe br), attributes: %w(class href src charset async data-instgrm-permalink))
     safe_html.strip!
