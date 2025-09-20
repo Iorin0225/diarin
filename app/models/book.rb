@@ -13,7 +13,11 @@ class Book < ApplicationRecord
 
   def year_months
     @year_months ||= {}
-    articles.published.group("strftime('%Y-%m', published_at)").order(published_at: :desc).select("strftime('%Y%m', published_at) as year_month, count(*) as count").map do |article|
+    articles.published
+            .group("strftime('%Y-%m', datetime(published_at, '+9 hours'))")
+            .order("published_at DESC")
+            .select("strftime('%Y%m', datetime(published_at, '+9 hours')) as year_month, count(*) as count")
+            .map do |article|
       year_month_int = article.year_month.to_i
       year = year_month_int / 100
       month = year_month_int % 100
