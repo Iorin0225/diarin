@@ -64,6 +64,13 @@
         font-size: var(--font-small-responsive);
       }
 
+      :is(blockquote) {
+        margin: 0;
+        padding: 1rem 2rem;
+        background-color: var(--color-subtle);
+        border-radius: 10px;
+      }
+
       :is(img), :is(iframe) {
         max-width: 80vw;
         max-height: 20rem;
