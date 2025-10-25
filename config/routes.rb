@@ -28,10 +28,15 @@ Rails.application.routes.draw do
     get ':year/:month', to: 'books#show', on: :member, as: :show_with_year_and_month, constraints: { year: /\d{4}/, month: /\d{1,2}/ }
 
     get 'rss', to: 'books#rss', on: :member
+
+    resources :random_articles, only: [:index]
   end
 
   # [Article Features]
   resources :articles
+
+  # [Random Article Feature]
+  resources :random_articles, only: [:index]
 
   # [API Features]
   namespace :api do

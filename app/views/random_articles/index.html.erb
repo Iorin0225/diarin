@@ -1,0 +1,51 @@
+<div id="diain-logo">
+  <%= link_to books_path do %>
+    produced by
+    <span class="diarin-name">Diarin</span>
+  <% end %>
+</div>
+<div id="book-title-wrapper">
+  <%= link_to book_path(@article.book) do %>
+    <div id="book-title">
+      <h1><%= @article.book.title %></h1>
+      <h2><%= @article.book.description %></h2>
+    </div>
+  <% end %>
+</div>
+
+<%= tag.div class: "article article--#{@article.book.theme_slug}" do %>
+  <div class="article__content">
+    <h1 class="article__content__title"><%= @article.title %></h1>
+    <div class="article__content__body">
+      <%= body_with_pre_wrap(@article) %>
+    </div>
+  </div>
+  <p class="article__meta">
+    <%= date_only(@article.published_at) || @article.status %>
+    <% if author?(@article) %>
+      <span>（<%= artcile_char_counts(@article) %>文字）</span>
+    <% end %>
+    <%= debug_id(@article) %>
+  </p>
+  <div class="article__action-buttons">
+    <div>
+      <% if @book.present? %>
+        <%= link_to "さらに読む", book_random_articles_path(@book) %>
+      <% else %>
+      <%= link_to "さらに読む", random_articles_path %>
+      <% end %>
+    </div>
+  </div>
+  <% if author?(@article) %>
+    <div class="article__action-buttons">
+      <div>
+        <%= link_to "編集", edit_article_path(@article) %>
+      </div>
+      <div>
+        <% if @article.status != 'deleted' %>
+          <%= link_to "削除", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "後悔しませんね？"} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+#random_articles {
+  display: grid;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+
+    :is(a) {
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+  }
+}
