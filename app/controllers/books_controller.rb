@@ -23,6 +23,9 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by(slug: params[:slug])
     redirect_to books_path if @book.blank?
+
+    handle_wordpress_url if wordpress_id_param.present?
+
     @articles = @book.articles.published.order(published_at: :desc).limit(100)
 
     year = params[:year].to_i if params[:year].present?
@@ -92,5 +95,16 @@ class BooksController < ApplicationController
         :first_view_type,
         :color,
         :published_at)
+    end
+
+    def wordpress_id_param
+      params[:p]
+    end
+
+    def handle_wordpress_url
+      article = Article.find_by(imported_id: wordpress_id_param, book: @book)
+
+      return if article.blank?
+      redirect_to article_path(article)
     end
 end
