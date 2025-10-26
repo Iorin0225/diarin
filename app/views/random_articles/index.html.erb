@@ -15,7 +15,12 @@
 
 <%= tag.div class: "article article--#{@article.book.theme_slug}" do %>
   <div class="article__content">
-    <h1 class="article__content__title"><%= @article.title %></h1>
+    <div class="article__content__title">
+      <h1><%= @article.title %></h1>
+      <div class="article__content__title__date">
+        <%= date_only(@article.published_at) || @article.status %>
+      </div>
+    </div>
     <div class="article__content__body">
       <%= body_with_pre_wrap(@article) %>
     </div>

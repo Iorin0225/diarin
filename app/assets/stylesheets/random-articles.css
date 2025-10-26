@@ -2,12 +2,10 @@
   display: grid;
   justify-content: center;
 
-  h1 {
-    text-align: center;
-
-    :is(a) {
-      text-decoration: none;
-      color: var(--color-ink);
+  .article__content {
+    .article__content__title__date {
+      font-size: var(--font-x-small-responsive);
+      text-wrap: nowrap;
     }
   }
 }

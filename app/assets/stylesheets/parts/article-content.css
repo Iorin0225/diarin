@@ -35,6 +35,11 @@
 
       .article__content__title {
         border-bottom: none;
+        max-height: 30rem;
+
+        .article__content__title__date {
+          display: none;
+        }
       }
 
       .article__content__body {
@@ -48,13 +53,21 @@
     flex-direction: column;
     gap: 1rem;
 
-    .article__content__title {
+    :is(h1) {
       font-weight: normal;
       font-size: var(--font-large-responsive);
+      margin: 0;
+    }
 
+    .article__content__title {
       margin: 0 0 1rem;
       padding-bottom: .2rem;
       border-bottom: 1px dotted var(--color-ink);
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
     }
 
     .article__content__body {
