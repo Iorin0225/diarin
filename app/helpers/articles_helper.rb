@@ -14,24 +14,24 @@ module ArticlesHelper
     body_html = article.body
     body_html = removing_wordpress_tags(body_html)
 
-    twitter_urls = body_html.scan(/https:\/\/twitter.com\/\w+\/status\/\d+/)
+    twitter_urls = body_html.scan(/(?<=^|\s)https:\/\/twitter.com\/\w+\/status\/\d+/)
     body_html = twitter_urls.inject(body_html) do |html, url|
       html.gsub(url, twitter_embed(url))
     end
 
-    instagram_urls = body_html.scan(/https:\/\/www.instagram.com\/p\/.+/)
+    instagram_urls = body_html.scan(/(?<=^|\s)https:\/\/www.instagram.com\/p\/.+/)
     body_html = instagram_urls.inject(body_html) do |html, url|
       html.gsub(url, instagram_embed(url))
     end
 
-    instagram_reel_urls = body_html.scan(/https:\/\/www.instagram.com\/reel\/.+/)
+    instagram_reel_urls = body_html.scan(/(?<=^|\s)https:\/\/www.instagram.com\/reel\/.+/)
     body_html = instagram_reel_urls.inject(body_html) do |html, url|
       html.gsub(url, instagram_reel_embed(url))
     end
 
-    youtube_urls = body_html.scan(/https:\/\/www.youtube.com\/watch\?v=[\w-]+/)
-    youtube_urls += body_html.scan(/https:\/\/youtu.be\/[\w-]+/)
-    youtube_urls += body_html.scan(/https:\/\/www.youtube.com\/live\/.+$/)
+    youtube_urls = body_html.scan(/(?<=^|\s)https:\/\/www.youtube.com\/watch\?v=[\w-]+/)
+    youtube_urls += body_html.scan(/(?<=^|\s)https:\/\/youtu.be\/[\w-]+/)
+    youtube_urls += body_html.scan(/(?<=^|\s)https:\/\/www.youtube.com\/live\/.+$/)
     body_html = youtube_urls.inject(body_html) do |html, url|
       html.gsub(url, youtube_embed(url))
     end
