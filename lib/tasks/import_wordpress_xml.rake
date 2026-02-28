@@ -1,19 +1,31 @@
 namespace :import_wordpress_xml do
-  desc "Import Wordpress XML in lib "
-  task :import, [:user_email_address] => :environment do |t, args|
-
+  desc 'Import Wordpress XML in lib '
+  task :import, [ :user_email_address ] => :environment do |t, args|
     require 'rexml/document'
-    email_address = args[:user_email_address]
-    author = User.find_by!(email_address: email_address)
-
-    puts "Author: #{author.display_name}"
-    puts 'Importing Wordpress XML'
+    require 'securerandom'
 
     file_path = Rails.root.join('lib', 'import_files', 'wordpress.xml')
     xml_data = File.read(file_path)
     document = REXML::Document.new(xml_data)
 
     blog = Import::WordpressBlog.new(document)
+
+    email_address = args[:user_email_address]
+    author, temporary_credentials = if email_address.present?
+      [ User.find_by!(email_address: email_address), nil ]
+    else
+      password = SecureRandom.alphanumeric(12)
+      email = 'iorin0225@example.com'
+      user = User.find_or_initialize_by(email_address: email)
+      user.display_name ||= blog.title.truncate(32)
+      user.password = password
+      user.save!
+
+      [ user, { email: email, password: password } ]
+    end
+
+    puts "Author: #{author.display_name}"
+    puts 'Importing Wordpress XML'
 
     pp "Start Importing #{blog.title}"
 
@@ -33,7 +45,7 @@ namespace :import_wordpress_xml do
       # show progress
       print "\r#{blog_posts.count} posts loaded"
     end
-    pp  ""
+    pp ''
 
     insert_bulk_data = []
     blog_posts.each do |blog_post|
@@ -52,26 +64,31 @@ namespace :import_wordpress_xml do
     Article.insert_all(insert_bulk_data)
     pp 'done'
 
+    if temporary_credentials
+      puts 'Temporary import user generated:'
+      puts "  email: #{temporary_credentials[:email]}"
+      puts "  password: #{temporary_credentials[:password]}"
+    end
   end
 
-  desc "Download Images"
+  desc 'Download Images'
   task download_images: :environment do
     Book.all.find_each do |book|
       book.articles.where('body LIKE %https://%')
     end
   end
 
-  desc "Remove wordpress strings"
+  desc 'Remove wordpress strings'
   task remove_wordpress_strings: :environment do
-    Article.where('body like ?', "%wp:paragraph%").find_each do |article|
+    Article.where('body like ?', '%wp:paragraph%').find_each do |article|
       body = article.body
       body.remove!("<!-- wp:paragraph -->\n").remove!("\n<!-- /wp:paragraph -->")
       article.update(body: body)
     end
 
-    Article.where('body like ?', "%<p>%").find_each do |article|
+    Article.where('body like ?', '%<p>%').find_each do |article|
       body = article.body
-      body.remove!("<p>").remove!("</p>")
+      body.remove!('<p>').remove!('</p>')
       article.update(body: body)
     end
 
