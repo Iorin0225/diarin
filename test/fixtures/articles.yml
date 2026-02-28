@@ -2,6 +2,12 @@
 
 one:
   title: MyString
+  body: Sample body text
+  status: draft
+  book: one
 
 two:
   title: MyString
+  body: Another sample body
+  status: draft
+  book: two

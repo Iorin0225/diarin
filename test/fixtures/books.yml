@@ -3,7 +3,9 @@
 one:
   title: MyString
   slug: MyString
+  description: Sample book description
 
 two:
   title: MyString
   slug: MyString
+  description: Sample book description
