@@ -8,10 +8,10 @@
     <%= tag.div(flash[:notice], class: "flash flash--notice") if flash[:notice] %>
 
     <% if is_new %>
-      <%= form.text_field :slug, requiresd: true, autofocus: true, placeholder: "Enter slug", value: book.slug %>
+      <%= form.text_field :slug, required: true, autofocus: true, placeholder: "Enter slug", value: book.slug %>
     <% end %>
-    <%= form.text_field :title, requiresd: true, autofocus: true, placeholder: "Enter title", value: book.title %>
-    <%= form.text_field :description, required: true, autofocus: true, placeholder: "Enter description", value: book.description %>
+    <%= form.text_field :title, required: true, placeholder: "Enter title", value: book.title %>
+    <%= form.text_field :description, required: true, placeholder: "Enter description", value: book.description %>
     <%= form.select :theme_slug, options_for_select(Theme::SLUGS, book.theme_slug), required: true %>
     <%= form.select :first_view_type, options_for_select(Book::FIRST_VIEW_TYPES, book.first_view_type), required: true %>
     <%= form.select :color, options_for_select(Book::COLORS, book.color), required: true %>

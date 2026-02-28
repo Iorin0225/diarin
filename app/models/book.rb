@@ -2,10 +2,18 @@ class Book < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: :author_user_id
   has_many :articles, dependent: :destroy
 
-  scope :published, -> { where('published_at < ?', Time.zone.now) }
-
   FIRST_VIEW_TYPES = %w[list latest_article].freeze
   COLORS = %w[auto red green blue yellow pink purple].freeze
+
+  validates :slug,
+            presence: true,
+            uniqueness: { case_sensitive: false }
+  validates :title, :description, :published_at, presence: true
+  validates :theme_slug, inclusion: { in: Theme::SLUGS }
+  validates :first_view_type, inclusion: { in: FIRST_VIEW_TYPES }
+  validates :color, inclusion: { in: COLORS }
+
+  scope :published, -> { where('published_at < ?', Time.zone.now) }
 
   def to_param
     slug
@@ -15,7 +23,7 @@ class Book < ApplicationRecord
     @year_months ||= {}
     articles.published
             .group("strftime('%Y-%m', datetime(published_at, '+9 hours'))")
-            .order("published_at DESC")
+            .order('published_at DESC')
             .select("strftime('%Y%m', datetime(published_at, '+9 hours')) as year_month, count(*) as count")
             .map do |article|
       year_month_int = article.year_month.to_i
